@@ -16,6 +16,8 @@ function setup() {
      Tile.createGrid(level);
   }
 function draw() {
+    if (waitForResize) {return;}
+
     background(200);
 
     for(var tile of tiles) {

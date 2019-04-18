@@ -1,4 +1,5 @@
 var tilesize = 50;
+var waitForResize = false;
 
 class Tile {
     constructor(col, row) {
@@ -15,9 +16,20 @@ class Tile {
 
     }
 
+    static getIndex(col, numRows) {
+        var numCols = width / tilesize;
+
+        let index = numCols + numRows * numCols
+        return index
+    }
+
     static createGrid(levelData) {
         let numCols = levelData.size[0];
         let numRows = levelData.size[1];
+
+        waitForResize = true;
+        resizeCanvas(numCols * tilesize, numRows * tilesize);
+        waitForResize = false;
 
         for (var r = 0; r < numRows; r++) {
 
