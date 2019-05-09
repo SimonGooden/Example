@@ -19,7 +19,7 @@ class Tile {
     static getIndex(col, numRows) {
         var numCols = width / tilesize;
 
-        let index = numCols + numRows * numCols
+        let index = col + row * numCols
         return index
     }
 
@@ -34,9 +34,14 @@ class Tile {
         for (var r = 0; r < numRows; r++) {
 
             for (var c = 0; c < numCols; c++) {
+                var index = Tile.getIndex(c, r);
 
-                tiles.push(new Tile(c, r));
-
+                if (levelData.tiles[index] === 0) {
+                    tiles.push(new Wall(c, r));
+                }  else if (levelData.tiles[index] === 1) {
+                      tiles.push(new Wall(c, r));
+                }
+                }
             }
         }
     }
