@@ -5,6 +5,7 @@ class Tile {
     constructor(col, row) {
         this.col = col;
         this.row = row;
+        this.color = color(160, 160, 180);
     }
 
     draw() {
@@ -16,7 +17,7 @@ class Tile {
 
     }
 
-    static getIndex(col, numRows) {
+    static getIndex(col, row) {
         var numCols = width / tilesize;
 
         let index = col + row * numCols
@@ -37,7 +38,7 @@ class Tile {
                 var index = Tile.getIndex(c, r);
 
                 if (levelData.tiles[index] === 0) {
-                    tiles.push(new Wall(c, r));
+                    tiles.push(new Tile(c, r));
                 }  else if (levelData.tiles[index] === 1) {
                       tiles.push(new Wall(c, r));
                 }
