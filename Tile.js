@@ -42,7 +42,6 @@ class Tile {
                 }  else if (levelData.tiles[index] === 1) {
                       tiles.push(new Wall(c, r));
                 }
-                }
             }
         }
     }
