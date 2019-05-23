@@ -11,11 +11,12 @@ var level = {
 }
 
 var tiles = [];
+var cakeEater;
 
 function setup() {
      createCanvas(500,500);
-
      Tile.createGrid(level);
+     cakeEater = new CakeEater(0,0);
   }
 function draw() {
     if (waitForResize) {return;}
@@ -25,4 +26,6 @@ function draw() {
     for(var tile of tiles) {
         tile.draw();
     }
+
+    cakeEater.update();
 }
