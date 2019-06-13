@@ -22,7 +22,6 @@ class CakeEater {
       this.setVelocity();
       }
 
-      this.setVelocity();
 
       this.x += this.xvel;
       this.y += this.yvel;
@@ -31,20 +30,22 @@ class CakeEater {
 
   setVelocity() {
       var speed = 2;
+      var myCol = this.x / tilesize;
+      var myRow = this.y / tilesize;
 
-      if (register[RIGHT_ARROW] === true) {
+      if (register[RIGHT_ARROW] === true && Tile.placeFree(myCol + 1, myRow)) {
         this.xvel = speed;
         this.yvel = 0;
       }
-      if (register[LEFT_ARROW] === true) {
+      if (register[LEFT_ARROW] === true && Tile.placeFree(myCol - 1, myRow)) {
         this.xvel =- speed;
         this.yvel = 0;
       }
-      if (register[UP_ARROW] === true) {
+      if (register[UP_ARROW] === true && Tile.placeFree(myCol, myRow - 1)) {
             this.yvel =- speed;
             this.xvel = 0;
       }
-      if (register[DOWN_ARROW] === true) {
+      if (register[DOWN_ARROW] === true && Tile.placeFree(myCol, myRow + 1)) {
                this.yvel = speed;
                this.xvel = 0;
       }

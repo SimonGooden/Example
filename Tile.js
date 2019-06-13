@@ -24,6 +24,24 @@ class Tile {
         return index
     }
 
+    static placeFree(col, row) {
+        var index = Tile.getIndex(col, row);
+
+        var numCols = width / tilesize;
+        var numRows = height / tilesize;
+
+        if (row >= numRows) {
+            return false;
+        if (row < 0) {
+            return false;
+        }
+
+    if (tiles[index] instanceof Wall) {
+        return false;
+    }
+    return true;
+}
+
     static createGrid(levelData) {
         let numCols = levelData.size[0];
         let numRows = levelData.size[1];
